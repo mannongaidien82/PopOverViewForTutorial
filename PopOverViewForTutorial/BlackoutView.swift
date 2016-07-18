@@ -16,10 +16,9 @@ enum BlackoutViewCutOut {
 
 class BlackoutView: UIView {
     
+    private var fillColor:UIColor
+    private var cutOuts:[BlackoutViewCutOut]
     
-    
-    let fillColor:UIColor
-    let cutOuts:[BlackoutViewCutOut]
     init(parentView: UIView, fillColor:UIColor, cutOut:BlackoutViewCutOut) {
         self.fillColor = fillColor
         self.cutOuts = [cutOut]
@@ -38,6 +37,15 @@ class BlackoutView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func refresh(cutOuts:[BlackoutViewCutOut]) {
+        self.cutOuts = cutOuts
+        self.setNeedsDisplay()
+    }
+
+    func refreshForClearCutOuts() {
+        self.refresh([])
     }
 
     // Only override drawRect: if you perform custom drawing.

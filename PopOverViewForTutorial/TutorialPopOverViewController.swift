@@ -110,6 +110,14 @@ class TutorialPopOverViewController: UIViewController {
             view.transform = CGAffineTransformIdentity
         }) { (_) in
         }
+        
+        
+//        
+//        var delay = 3.0 * Double(NSEC_PER_SEC)
+//        var time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+//        dispatch_after(time, dispatch_get_main_queue(), {
+//            self.blackoutView?.refreshForClearCutOuts()
+//        })
     }
 }
 
