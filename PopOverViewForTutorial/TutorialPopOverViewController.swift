@@ -14,6 +14,8 @@ class TutorialPopOverViewController: UIViewController {
     var image:UIImage!
     var blackoutView:BlackoutView?
     
+    private var showedAnimation:Bool = false
+    
     convenience init() {
         self.init(nibName: "TutorialPopOverViewController", bundle: NSBundle.mainBundle())
     }
@@ -48,7 +50,37 @@ class TutorialPopOverViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if !self.showedAnimation {
+            self.showedAnimation = true
+            self.showAnimation()
+        }
+    }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIView.animateWithDuration(0.2, animations: {
+            self.blackoutView?.alpha = 0
+        }) { (_) in
+            self.blackoutView?.removeFromSuperview()
+        }
+    }
+
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesBegan(touches, withEvent: event)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    private func showAnimation() {
         let view = self.popoverPresentationController!.presentedView()!
         let backgroundView = view.performSelector(Selector("backgroundView")).takeUnretainedValue() as! UIPopoverBackgroundView
         let arrowOffset = backgroundView.arrowOffset
@@ -78,31 +110,6 @@ class TutorialPopOverViewController: UIViewController {
             view.transform = CGAffineTransformIdentity
         }) { (_) in
         }
- 
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        UIView.animateWithDuration(0.2, animations: {
-            self.blackoutView?.alpha = 0
-        }) { (_) in
-            self.blackoutView?.removeFromSuperview()
-        }
-    }
-
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesBegan(touches, withEvent: event)
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
