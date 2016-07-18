@@ -27,14 +27,16 @@ class FirstViewController: UIViewController {
         let point = touch.locationInView(self.view)
         print("Point\(point)")
         let image = UIImage(named: "pokemon")
-        let selectedRect = CGRect(origin: point, size: CGSize(width: 1, height: 1))
+        let selectedRect = CGRect(origin: point, size: CGSize(width: 60, height: 60))
         let popover = TutorialPopOverViewController()
+        popover.blackoutView = BlackoutView(parentView: self.view, fillColor: UIColor(white: 0.0, alpha: 0.6), framesToCutOut: [selectedRect])
         popover.image = image
         popover.popoverPresentationController?.sourceView = self.view
         popover.popoverPresentationController?.sourceRect = selectedRect
         popover.popoverPresentationController?.permittedArrowDirections = .Any
         popover.popoverPresentationController?.popoverBackgroundViewClass = TutorialPopoverBackgroundView.self
         popover.preferredContentSize = CGSize(width: 200, height: 85)
+        
         self.presentViewController(popover, animated: true, completion: nil)
     }
 }

@@ -11,7 +11,8 @@ import UIKit
 class TutorialPopOverViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    var image:UIImage?
+    var image:UIImage!
+    var blackoutView:BlackoutView!
     
     convenience init() {
         self.init(nibName: "TutorialPopOverViewController", bundle: NSBundle.mainBundle())
@@ -47,7 +48,7 @@ class TutorialPopOverViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+    
         let view = self.popoverPresentationController!.presentedView()!
         let backgroundView = view.performSelector(Selector("backgroundView")).takeUnretainedValue() as! UIPopoverBackgroundView
         let arrowOffset = backgroundView.arrowOffset
@@ -96,7 +97,7 @@ class TutorialPopOverViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        self.blackoutView.removeFromSuperview()
     }
 
 }
@@ -108,11 +109,9 @@ extension TutorialPopOverViewController: UIPopoverPresentationControllerDelegate
     }
     
     func popoverPresentationControllerShouldDismissPopover(popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        
         return true
     }
     
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
-        
     }
 }
