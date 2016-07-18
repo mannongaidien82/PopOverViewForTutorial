@@ -23,7 +23,7 @@ class SecondViewController: UIViewController {
 
     @IBAction func tapLeftTopButton(sender: AnyObject) {
         let button = sender as! UIButton
-        let image = UIImage(named: "pokemon")
+        let image = UIImage(named: "niconico")
         let selectedRect = CGRectMake(button.frame.origin.x-5, button.frame.origin.y-5, button.frame.width+10, button.frame.height+10)
         let popover = TutorialPopOverViewController()
         popover.blackoutView = BlackoutView(parentView: self.view, fillColor: UIColor(white: 0.0, alpha: 0.6), cutOut: BlackoutViewCutOut.roundedRect(rect: selectedRect, cornerRadius: 3))

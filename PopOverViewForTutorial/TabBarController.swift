@@ -40,7 +40,7 @@ class TabBarController: UITabBarController {
 extension TabBarController:UITabBarControllerDelegate {
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         let index = self.viewControllers!.indexOf(viewController)!.hashValue
-        let image = UIImage(named: "pokemon")
+        let image = UIImage(named: "niconico")
         let selectedItem = orderedTabBarItemViews()[index]
         
         let selectedRect = CGRectMake(self.tabBar.frame.minX + selectedItem.frame.minX, self.tabBar.frame.minY + selectedItem.frame.minY,selectedItem.frame.width, selectedItem.frame.height)
