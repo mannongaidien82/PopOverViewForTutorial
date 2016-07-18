@@ -75,9 +75,10 @@ class TutorialPopOverViewController: UIViewController {
         }
         
         let view = self.popoverPresentationController!.presentedView()!
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+        UIView.animateWithDuration(0.3, animations: {
             view.transform = CGAffineTransformMakeScale(0.1, 0.1)
-        }) { (_) in
+            }) { (_) in
+            view.hidden = true
         }
     }
 
