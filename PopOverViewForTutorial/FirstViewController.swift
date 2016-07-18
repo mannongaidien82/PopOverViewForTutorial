@@ -27,7 +27,7 @@ class FirstViewController: UIViewController {
         let point = touch.locationInView(self.view)
         print("Point\(point)")
         let image = UIImage(named: "niconico")
-        let selectedRect = CGRect(origin: point, size: CGSize(width: 60, height: 60))
+        let selectedRect = CGRect(origin: point, size: CGSize(width: 44, height: 44))
         let popover = TutorialPopOverViewController()
         popover.blackoutView = BlackoutView(parentView: self.view, fillColor: UIColor(white: 0.0, alpha: 0.6), cutOut: BlackoutViewCutOut.Oval(rect: selectedRect))
         popover.image = image
