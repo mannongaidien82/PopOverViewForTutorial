@@ -8,14 +8,29 @@
 
 import UIKit
 
+enum BlackoutViewCutOut {
+    case Rect(rect: CGRect)
+    case roundedRect(rect: CGRect, cornerRadius: CGFloat)
+    case Oval(rect: CGRect)
+}
+
 class BlackoutView: UIView {
     
-    let fillColor:UIColor
-    let framesToCutOut:[CGRect]
     
-    init(parentView: UIView, fillColor:UIColor, framesToCutOut:[CGRect]) {
+    
+    let fillColor:UIColor
+    let cutOuts:[BlackoutViewCutOut]
+    init(parentView: UIView, fillColor:UIColor, cutOut:BlackoutViewCutOut) {
         self.fillColor = fillColor
-        self.framesToCutOut = framesToCutOut
+        self.cutOuts = [cutOut]
+        super.init(frame: parentView.frame)
+        self.backgroundColor = UIColor.clearColor()
+        parentView.addSubview(self)
+    }
+    
+    init(parentView: UIView, fillColor:UIColor, cutOuts:[BlackoutViewCutOut]) {
+        self.fillColor = fillColor
+        self.cutOuts = cutOuts
         super.init(frame: parentView.frame)
         self.backgroundColor = UIColor.clearColor()
         parentView.addSubview(self)
@@ -33,8 +48,19 @@ class BlackoutView: UIView {
         UIRectFill(rect);
         let context = UIGraphicsGetCurrentContext()
         CGContextSetBlendMode(context, .DestinationOut)
-        for pathRect in self.framesToCutOut {
-            let path = UIBezierPath(ovalInRect: pathRect)
+        for cutOut in self.cutOuts {
+            var path:UIBezierPath!
+            switch cutOut {
+            case .Rect(let cutOutRect):
+                path = UIBezierPath(rect:cutOutRect)
+                break
+            case .roundedRect(let cutOutRect,let cutOutRectCornerRadius):
+                path = UIBezierPath(roundedRect: cutOutRect, cornerRadius: cutOutRectCornerRadius)
+                break
+            case .Oval(let cutOutRect):
+                path = UIBezierPath(ovalInRect:cutOutRect)
+                break
+            }
             path.fill()
         }
         CGContextSetBlendMode(context, .Normal)

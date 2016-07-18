@@ -122,16 +122,17 @@ class TutorialPopoverBackgroundView: UIPopoverBackgroundView {
         self.backgroundView.frame = CGRectMake(left, top, width, height)
         self.arrowView.transform = rotation
         
-//        if let window = UIApplication.sharedApplication().keyWindow {
-//            for v in window.subviews {
-//                if NSStringFromClass(v.dynamicType) == "UITransitionView" {
-//                    for vv in v.subviews {
-//                        if NSStringFromClass(vv.dynamicType) == "_UIMirrorNinePatchView" {
-//                            vv.hidden = true
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        //This is Very Tricky!!! below codes hide background black views.
+        if let window = UIApplication.sharedApplication().keyWindow {
+            for v in window.subviews {
+                if NSStringFromClass(v.dynamicType) == "UITransitionView" {
+                    for vv in v.subviews {
+                        if NSStringFromClass(vv.dynamicType) == "_UIMirrorNinePatchView" {
+                            vv.hidden = true
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ class TutorialPopOverViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     var image:UIImage!
-    var blackoutView:BlackoutView!
+    var blackoutView:BlackoutView?
     
     convenience init() {
         self.init(nibName: "TutorialPopOverViewController", bundle: NSBundle.mainBundle())
@@ -80,10 +80,6 @@ class TutorialPopOverViewController: UIViewController {
         }
  
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
 
     /*
     // MARK: - Navigation
@@ -97,21 +93,22 @@ class TutorialPopOverViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.blackoutView.removeFromSuperview()
+        UIView.animateWithDuration(0.2, animations: {
+            self.blackoutView?.alpha = 0
+        }) { (_) in
+            self.blackoutView?.removeFromSuperview()
+        }
     }
 
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesBegan(touches, withEvent: event)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
 extension TutorialPopOverViewController: UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
-    }
-    
-    func popoverPresentationControllerShouldDismissPopover(popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        return true
-    }
-    
-    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
     }
 }

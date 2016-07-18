@@ -29,7 +29,7 @@ class FirstViewController: UIViewController {
         let image = UIImage(named: "pokemon")
         let selectedRect = CGRect(origin: point, size: CGSize(width: 60, height: 60))
         let popover = TutorialPopOverViewController()
-        popover.blackoutView = BlackoutView(parentView: self.view, fillColor: UIColor(white: 0.0, alpha: 0.6), framesToCutOut: [selectedRect])
+        popover.blackoutView = BlackoutView(parentView: self.view, fillColor: UIColor(white: 0.0, alpha: 0.6), cutOut: BlackoutViewCutOut.Oval(rect: selectedRect))
         popover.image = image
         popover.popoverPresentationController?.sourceView = self.view
         popover.popoverPresentationController?.sourceRect = selectedRect
