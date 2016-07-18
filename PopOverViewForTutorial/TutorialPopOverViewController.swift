@@ -36,7 +36,7 @@ class TutorialPopOverViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.popoverPresentationController?.backgroundColor = self.view.backgroundColor
+        //self.popoverPresentationController?.backgroundColor = UIColor.clearColor()//self.view.backgroundColor
         self.imageView.image = self.image
     }
 
@@ -47,44 +47,41 @@ class TutorialPopOverViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         let view = self.popoverPresentationController!.presentedView()!
-        let col = view.performSelector(Selector("popoverBackgroundColor"))
-        print("\(col)")
         let backgroundView = view.performSelector(Selector("backgroundView")).takeUnretainedValue() as! UIPopoverBackgroundView
         let arrowOffset = backgroundView.arrowOffset
-        print("backgroundView.arrowOffset:\(arrowOffset)")
         switch self.popoverPresentationController!.arrowDirection {
         case UIPopoverArrowDirection.Up:
             let offset = arrowOffset/view.frame.width
-            view.layer.anchorPoint = CGPoint(x: 0.5 + offset, y: 0)
+            view.layer.anchorPoint = CGPoint(x: view.layer.anchorPoint.x + offset, y: 0)
             break;
         case UIPopoverArrowDirection.Down:
             let offset = arrowOffset/view.frame.width
-            view.layer.anchorPoint = CGPoint(x: 0.5 + offset, y: 1)
+            view.layer.anchorPoint = CGPoint(x: view.layer.anchorPoint.x + offset, y: 1)
             break;
         case UIPopoverArrowDirection.Left:
             let offset = arrowOffset/view.frame.height
-            view.layer.anchorPoint = CGPoint(x: 0, y: 0.5 + offset)
+            view.layer.anchorPoint = CGPoint(x: 0, y: view.layer.anchorPoint.y + offset)
             break;
         case UIPopoverArrowDirection.Right:
             let offset = arrowOffset/view.frame.height
-            view.layer.anchorPoint = CGPoint(x: 1, y: 0.5 + offset)
+            view.layer.anchorPoint = CGPoint(x: 1, y: view.layer.anchorPoint.y + offset)
             break;
         default:
             break;
         }
-        
+        print("view.layer.anchorPoint\(view.layer.anchorPoint)")
         view.transform = CGAffineTransformMakeScale(0.1, 0.1)
         UIView.animateWithDuration(0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             view.transform = CGAffineTransformIdentity
-            }) { (_) in
-                
+        }) { (_) in
         }
+ 
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
 
     /*
@@ -96,6 +93,11 @@ class TutorialPopOverViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
 
 }
 
@@ -103,5 +105,14 @@ extension TutorialPopOverViewController: UIPopoverPresentationControllerDelegate
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
+    }
+    
+    func popoverPresentationControllerShouldDismissPopover(popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        
+        return true
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
+        
     }
 }

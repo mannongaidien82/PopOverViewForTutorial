@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6520BBFD1D3BF0CB007E2FC5 /* TutorialPopoverBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520BBFC1D3BF0CB007E2FC5 /* TutorialPopoverBackgroundView.swift */; };
+		6520BBFF1D3BF0EF007E2FC5 /* SpeechBalloonArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520BBFE1D3BF0EF007E2FC5 /* SpeechBalloonArrowView.swift */; };
 		659E7A321D3B2D2E00405C9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659E7A311D3B2D2E00405C9C /* AppDelegate.swift */; };
 		659E7A341D3B2D2E00405C9C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659E7A331D3B2D2E00405C9C /* FirstViewController.swift */; };
 		659E7A361D3B2D2E00405C9C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659E7A351D3B2D2E00405C9C /* SecondViewController.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6520BBFC1D3BF0CB007E2FC5 /* TutorialPopoverBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPopoverBackgroundView.swift; sourceTree = "<group>"; };
+		6520BBFE1D3BF0EF007E2FC5 /* SpeechBalloonArrowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechBalloonArrowView.swift; sourceTree = "<group>"; };
 		659E7A2E1D3B2D2E00405C9C /* PopOverViewForTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopOverViewForTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		659E7A311D3B2D2E00405C9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		659E7A331D3B2D2E00405C9C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 				659E7A351D3B2D2E00405C9C /* SecondViewController.swift */,
 				659E7A371D3B2D2E00405C9C /* Main.storyboard */,
 				659E7A631D3B2EE300405C9C /* TutorialPopOverViewController.swift */,
+				6520BBFC1D3BF0CB007E2FC5 /* TutorialPopoverBackgroundView.swift */,
+				6520BBFE1D3BF0EF007E2FC5 /* SpeechBalloonArrowView.swift */,
 				659E7A641D3B2EE300405C9C /* TutorialPopOverViewController.xib */,
 				659E7A3A1D3B2D2E00405C9C /* Assets.xcassets */,
 				659E7A3C1D3B2D2E00405C9C /* LaunchScreen.storyboard */,
@@ -267,8 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6520BBFF1D3BF0EF007E2FC5 /* SpeechBalloonArrowView.swift in Sources */,
 				659E7A651D3B2EE300405C9C /* TutorialPopOverViewController.swift in Sources */,
 				659E7A361D3B2D2E00405C9C /* SecondViewController.swift in Sources */,
+				6520BBFD1D3BF0CB007E2FC5 /* TutorialPopoverBackgroundView.swift in Sources */,
 				659E7A321D3B2D2E00405C9C /* AppDelegate.swift in Sources */,
 				659E7A341D3B2D2E00405C9C /* FirstViewController.swift in Sources */,
 			);
@@ -413,9 +421,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = PopOverViewForTutorial/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hikarusato.test.PopOverViewForTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -426,9 +437,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = PopOverViewForTutorial/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hikarusato.test.PopOverViewForTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -499,6 +513,7 @@
 				659E7A5A1D3B2D2E00405C9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		659E7A5B1D3B2D2E00405C9C /* Build configuration list for PBXNativeTarget "PopOverViewForTutorialTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +522,7 @@
 				659E7A5D1D3B2D2E00405C9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		659E7A5E1D3B2D2E00405C9C /* Build configuration list for PBXNativeTarget "PopOverViewForTutorialUITests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +531,7 @@
 				659E7A601D3B2D2E00405C9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

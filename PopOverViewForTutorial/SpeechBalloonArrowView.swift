@@ -1,22 +1,20 @@
 //
-//  SpeechBalloonArrowView.swift
-//  Popover View
+//  BalloonArrowView.swift
+//  PPopOverViewForTutorial
 //
 //  Created by grachro on 2016/06/11.
 //
 
 import UIKit
 
-class SpeechBalloonArrowView: UIView {
+class BalloonArrowView: UIView {
     
-    var arrowWidth:CGFloat
+    let arrowWidth:CGFloat
     let arrowHeight:CGFloat
-    let borderWidth:CGFloat
     
-    init(width: CGFloat = 25, height: CGFloat = 10, borderWidth: CGFloat = 2) {
-        self.arrowWidth = width
-        self.arrowHeight = height
-        self.borderWidth = borderWidth
+    init(width: CGFloat, height: CGFloat) {
+        arrowWidth = width
+        arrowHeight = height
         super.init(frame: CGRect(x: 0, y: 0, width: arrowWidth, height: arrowHeight))
         self.backgroundColor = UIColor.clearColor()
     }
@@ -26,25 +24,15 @@ class SpeechBalloonArrowView: UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        
         let x:CGFloat = arrowWidth / 2
         let y:CGFloat = 0
         
-        let back = UIBezierPath();
-        back.moveToPoint(CGPointMake(x, y+borderWidth));
-        back.addLineToPoint(CGPointMake(x+arrowWidth / 2, y+arrowHeight));
-        back.addLineToPoint(CGPointMake(x-arrowWidth / 2, y+arrowHeight));
-        back.closePath()
+        let path = UIBezierPath();
+        path.moveToPoint(CGPointMake(x, y));
+        path.addLineToPoint(CGPointMake(x+arrowWidth/3, y+arrowHeight*2/3));
+        path.addLineToPoint(CGPointMake(x-arrowWidth/3, y+arrowHeight*2/3));
+        path.closePath()
         UIColor.whiteColor().setFill()
-        back.fill();
-
-        let line = UIBezierPath();
-        line.moveToPoint(CGPointMake(x+arrowWidth / 2, y+arrowHeight));
-        line.addLineToPoint(CGPointMake(x, y+borderWidth));
-        line.addLineToPoint(CGPointMake(x-arrowWidth / 2, y+arrowHeight));
-        UIColor.redColor().setStroke()
-        line.lineWidth = self.borderWidth
-        line.stroke();
-
+        path.fill();
     }
 }

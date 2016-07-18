@@ -33,8 +33,8 @@ class FirstViewController: UIViewController {
         popover.popoverPresentationController?.sourceView = self.view
         popover.popoverPresentationController?.sourceRect = selectedRect
         popover.popoverPresentationController?.permittedArrowDirections = .Any
-        //popover.popoverPresentationController?.popoverBackgroundViewClass = HSPopoverBackgroundView.self
-        popover.preferredContentSize = CGSize(width: 320, height: 85)
+        popover.popoverPresentationController?.popoverBackgroundViewClass = TutorialPopoverBackgroundView.self
+        popover.preferredContentSize = CGSize(width: 200, height: 85)
         self.presentViewController(popover, animated: true, completion: nil)
     }
 }
