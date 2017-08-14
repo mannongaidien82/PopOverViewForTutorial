@@ -214,14 +214,19 @@
 				TargetAttributes = {
 					659E7A2D1D3B2D2E00405C9C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = J6JEG8NWRQ;
+						DevelopmentTeam = Z33RQ32T74;
+						LastSwiftMigration = 0830;
 					};
 					659E7A431D3B2D2E00405C9C = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = Z33RQ32T74;
+						LastSwiftMigration = 0830;
 						TestTargetID = 659E7A2D1D3B2D2E00405C9C;
 					};
 					659E7A4E1D3B2D2E00405C9C = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = Z33RQ32T74;
+						LastSwiftMigration = 0830;
 						TestTargetID = 659E7A2D1D3B2D2E00405C9C;
 					};
 				};
@@ -429,6 +434,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = Z33RQ32T74;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = PopOverViewForTutorial/Info.plist;
@@ -437,6 +443,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hikarusato.test.PopOverViewForTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -445,6 +452,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = Z33RQ32T74;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = PopOverViewForTutorial/Info.plist;
@@ -453,6 +461,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hikarusato.test.PopOverViewForTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -460,10 +469,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Z33RQ32T74;
 				INFOPLIST_FILE = PopOverViewForTutorialTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hikarusato.test.PopOverViewForTutorialTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopOverViewForTutorial.app/PopOverViewForTutorial";
 			};
 			name = Debug;
@@ -472,10 +483,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Z33RQ32T74;
 				INFOPLIST_FILE = PopOverViewForTutorialTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hikarusato.test.PopOverViewForTutorialTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopOverViewForTutorial.app/PopOverViewForTutorial";
 			};
 			name = Release;
@@ -483,10 +496,12 @@
 		659E7A5F1D3B2D2E00405C9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = Z33RQ32T74;
 				INFOPLIST_FILE = PopOverViewForTutorialUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hikarusato.test.PopOverViewForTutorialUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = PopOverViewForTutorial;
 			};
 			name = Debug;
@@ -494,10 +509,12 @@
 		659E7A601D3B2D2E00405C9C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = Z33RQ32T74;
 				INFOPLIST_FILE = PopOverViewForTutorialUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hikarusato.test.PopOverViewForTutorialUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = PopOverViewForTutorial;
 			};
 			name = Release;

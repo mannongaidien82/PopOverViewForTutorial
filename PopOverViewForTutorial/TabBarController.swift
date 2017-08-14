@@ -17,7 +17,7 @@ class TabBarController: UITabBarController {
         self.delegate = self
         // Prevent UIBarButtonItem tintColor becoming gray when presenting popover.
         // see:http://stackoverflow.com/questions/31148852/uibarbuttonitem-doesnt-turn-gray-when-presenting-popover
-        self.tabBar.tintAdjustmentMode = UIViewTintAdjustmentMode.Normal
+        self.tabBar.tintAdjustmentMode = UIViewTintAdjustmentMode.normal
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,27 +38,27 @@ class TabBarController: UITabBarController {
 }
 
 extension TabBarController:UITabBarControllerDelegate {
-    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        let index = self.viewControllers!.indexOf(viewController)!.hashValue
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let index = self.viewControllers!.index(of: viewController)!.hashValue
         let image = UIImage(named: "niconico")
         let selectedItem = orderedTabBarItemViews()[index]
         
-        let selectedRect = CGRectMake(self.tabBar.frame.minX + selectedItem.frame.minX, self.tabBar.frame.minY + selectedItem.frame.minY,selectedItem.frame.width, selectedItem.frame.height)
+        let selectedRect = CGRect(x: self.tabBar.frame.minX + selectedItem.frame.minX, y: self.tabBar.frame.minY + selectedItem.frame.minY,width: selectedItem.frame.width, height: selectedItem.frame.height)
         let popover = TutorialPopOverViewController()
         popover.blackoutView = BlackoutView(parentView: self.view, fillColor: UIColor(white: 0.0, alpha: 0.6), cutOut: BlackoutViewCutOut.roundedRect(rect: selectedRect, cornerRadius: 3))
         popover.image = image
         popover.popoverPresentationController?.sourceView = self.view
         popover.popoverPresentationController?.sourceRect = selectedRect
-        popover.popoverPresentationController?.permittedArrowDirections = .Any
+        popover.popoverPresentationController?.permittedArrowDirections = .any
         popover.popoverPresentationController?.popoverBackgroundViewClass = TutorialPopoverBackgroundView.self
         popover.preferredContentSize = CGSize(width: 200, height: 85)
         
-        self.presentViewController(popover, animated: true, completion:{            
+        self.present(popover, animated: true, completion:{            
         })
     }
     
-    private func orderedTabBarItemViews() -> [UIView] {
-        let interactionViews = tabBar.subviews.filter({$0.userInteractionEnabled})
-        return interactionViews.sort({$0.frame.minX < $1.frame.minX})
+    fileprivate func orderedTabBarItemViews() -> [UIView] {
+        let interactionViews = tabBar.subviews.filter({$0.isUserInteractionEnabled})
+        return interactionViews.sorted(by: {$0.frame.minX < $1.frame.minX})
     }
 }

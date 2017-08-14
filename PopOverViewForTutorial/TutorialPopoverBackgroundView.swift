@@ -21,15 +21,15 @@ class TutorialPopoverBackgroundView: UIPopoverBackgroundView {
     */
     
     let arrowView:BalloonArrowView
-    let backgroundView = UIView(frame: CGRectMake(0, 0, 0, 0))
+    let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
     var _arrowOffset:CGFloat = 0
-    var _arrowDirection:UIPopoverArrowDirection = UIPopoverArrowDirection.Any
+    var _arrowDirection:UIPopoverArrowDirection = UIPopoverArrowDirection.any
     
     override init(frame: CGRect) {
         self.arrowView = BalloonArrowView(width:ARROW_BASE, height:ARROW_BASE)
         super.init(frame: frame)
-        self.backgroundView.backgroundColor = UIColor.whiteColor()
+        self.backgroundView.backgroundColor = UIColor.white
         self.backgroundView.layer.cornerRadius = 10.0
         self.backgroundView.clipsToBounds = true
         self.addSubview(self.backgroundView)
@@ -80,55 +80,55 @@ class TutorialPopoverBackgroundView: UIPopoverBackgroundView {
         var left:CGFloat = 0.0;
         var top:CGFloat = 0.0;
         var coordinate:CGFloat = 0.0;
-        var rotation = CGAffineTransformIdentity;
+        var rotation = CGAffineTransform.identity;
         
         
         switch (self.arrowDirection) {
-        case UIPopoverArrowDirection.Up:
+        case UIPopoverArrowDirection.up:
             top += arrowView.arrowHeight;
             height -= arrowView.arrowHeight;
             coordinate = ((self.frame.size.width / 2) + self.arrowOffset) - (ARROW_BASE/2);
-            self.arrowView.frame = CGRectMake(coordinate, 0, ARROW_BASE, arrowView.arrowHeight);
+            self.arrowView.frame = CGRect(x: coordinate, y: 0, width: ARROW_BASE, height: arrowView.arrowHeight);
             break;
             
             
-        case UIPopoverArrowDirection.Down:
+        case UIPopoverArrowDirection.down:
             height -= arrowView.arrowHeight;
             coordinate = ((self.frame.size.width / 2) + self.arrowOffset) - (ARROW_BASE/2);
-            arrowView.frame = CGRectMake(coordinate, height, ARROW_BASE, arrowView.arrowHeight);
-            rotation = CGAffineTransformMakeRotation( CGFloat (M_PI) );
+            arrowView.frame = CGRect(x: coordinate, y: height, width: ARROW_BASE, height: arrowView.arrowHeight);
+            rotation = CGAffineTransform( rotationAngle: CGFloat (M_PI) );
             break;
             
-        case UIPopoverArrowDirection.Left:
+        case UIPopoverArrowDirection.left:
             left += ARROW_BASE;
             width -= ARROW_BASE;
             coordinate = ((self.frame.size.height / 2) + self.arrowOffset) - (arrowView.arrowHeight/2);
-            arrowView.frame = CGRectMake(0, coordinate, ARROW_BASE, arrowView.arrowHeight);
-            rotation = CGAffineTransformMakeRotation( -1 * CGFloat (M_PI_2) );
+            arrowView.frame = CGRect(x: 0, y: coordinate, width: ARROW_BASE, height: arrowView.arrowHeight);
+            rotation = CGAffineTransform( rotationAngle: -1 * CGFloat (M_PI_2) );
             break;
             
-        case UIPopoverArrowDirection.Right:
+        case UIPopoverArrowDirection.right:
             width -= ARROW_BASE;
             coordinate = ((self.frame.size.height / 2) + self.arrowOffset) - (arrowView.arrowHeight/2);
-            arrowView.frame = CGRectMake(width, coordinate, ARROW_BASE, arrowView.arrowHeight);
-            rotation = CGAffineTransformMakeRotation( CGFloat (M_PI_2) );
+            arrowView.frame = CGRect(x: width, y: coordinate, width: ARROW_BASE, height: arrowView.arrowHeight);
+            rotation = CGAffineTransform( rotationAngle: CGFloat (M_PI_2) );
             break;
             
         default:
             break
         }
         
-        self.layer.shadowColor = UIColor.clearColor().CGColor
-        self.backgroundView.frame = CGRectMake(left, top, width, height)
+        self.layer.shadowColor = UIColor.clear.cgColor
+        self.backgroundView.frame = CGRect(x: left, y: top, width: width, height: height)
         self.arrowView.transform = rotation
         
         //This is Very Tricky!!! below codes hide background black views.
-        if let window = UIApplication.sharedApplication().keyWindow {
+        if let window = UIApplication.shared.keyWindow {
             for v in window.subviews {
-                if NSStringFromClass(v.dynamicType) == "UITransitionView" {
+                if NSStringFromClass(type(of: v)) == "UITransitionView" {
                     for vv in v.subviews {
-                        if NSStringFromClass(vv.dynamicType) == "_UIMirrorNinePatchView" {
-                            vv.hidden = true
+                        if NSStringFromClass(type(of: vv)) == "_UIMirrorNinePatchView" {
+                            vv.isHidden = true
                         }
                     }
                 }

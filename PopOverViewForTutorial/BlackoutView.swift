@@ -9,21 +9,21 @@
 import UIKit
 
 enum BlackoutViewCutOut {
-    case Rect(rect: CGRect)
+    case rect(rect: CGRect)
     case roundedRect(rect: CGRect, cornerRadius: CGFloat)
-    case Oval(rect: CGRect)
+    case oval(rect: CGRect)
 }
 
 class BlackoutView: UIView {
     
-    private var fillColor:UIColor
-    private var cutOuts:[BlackoutViewCutOut]
+    fileprivate var fillColor:UIColor
+    fileprivate var cutOuts:[BlackoutViewCutOut]
     
     init(parentView: UIView, fillColor:UIColor, cutOut:BlackoutViewCutOut) {
         self.fillColor = fillColor
         self.cutOuts = [cutOut]
         super.init(frame: parentView.frame)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         parentView.addSubview(self)
     }
     
@@ -31,7 +31,7 @@ class BlackoutView: UIView {
         self.fillColor = fillColor
         self.cutOuts = cutOuts
         super.init(frame: parentView.frame)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         parentView.addSubview(self)
     }
 
@@ -39,7 +39,7 @@ class BlackoutView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func refresh(cutOuts:[BlackoutViewCutOut]) {
+    func refresh(_ cutOuts:[BlackoutViewCutOut]) {
         self.cutOuts = cutOuts
         self.setNeedsDisplay()
     }
@@ -50,28 +50,28 @@ class BlackoutView: UIView {
 
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         // Drawing code
         self.fillColor.setFill()
         UIRectFill(rect);
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetBlendMode(context, .DestinationOut)
+        context?.setBlendMode(.destinationOut)
         for cutOut in self.cutOuts {
             var path:UIBezierPath!
             switch cutOut {
-            case .Rect(let cutOutRect):
+            case .rect(let cutOutRect):
                 path = UIBezierPath(rect:cutOutRect)
                 break
             case .roundedRect(let cutOutRect,let cutOutRectCornerRadius):
                 path = UIBezierPath(roundedRect: cutOutRect, cornerRadius: cutOutRectCornerRadius)
                 break
-            case .Oval(let cutOutRect):
-                path = UIBezierPath(ovalInRect:cutOutRect)
+            case .oval(let cutOutRect):
+                path = UIBezierPath(ovalIn:cutOutRect)
                 break
             }
             path.fill()
         }
-        CGContextSetBlendMode(context, .Normal)
+        context?.setBlendMode(.normal)
     }
 
 }
