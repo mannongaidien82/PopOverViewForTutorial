@@ -89,7 +89,7 @@ class TutorialPopOverViewController: UIViewController {
     
     fileprivate func showAnimation() {
         let view = self.popoverPresentationController!.presentedView!
-        let backgroundView = view.perform(Selector("backgroundView")).takeUnretainedValue() as! UIPopoverBackgroundView
+        let backgroundView = view.perform(#selector(getter: UICollectionView.backgroundView)).takeUnretainedValue() as! UIPopoverBackgroundView
         let arrowOffset = backgroundView.arrowOffset
         switch self.popoverPresentationController!.arrowDirection {
         case UIPopoverArrowDirection.up:

@@ -96,7 +96,7 @@ class TutorialPopoverBackgroundView: UIPopoverBackgroundView {
             height -= arrowView.arrowHeight;
             coordinate = ((self.frame.size.width / 2) + self.arrowOffset) - (ARROW_BASE/2);
             arrowView.frame = CGRect(x: coordinate, y: height, width: ARROW_BASE, height: arrowView.arrowHeight);
-            rotation = CGAffineTransform( rotationAngle: CGFloat (M_PI) );
+            rotation = CGAffineTransform( rotationAngle: CGFloat (Double.pi) );
             break;
             
         case UIPopoverArrowDirection.left:
@@ -104,14 +104,14 @@ class TutorialPopoverBackgroundView: UIPopoverBackgroundView {
             width -= ARROW_BASE;
             coordinate = ((self.frame.size.height / 2) + self.arrowOffset) - (arrowView.arrowHeight/2);
             arrowView.frame = CGRect(x: 0, y: coordinate, width: ARROW_BASE, height: arrowView.arrowHeight);
-            rotation = CGAffineTransform( rotationAngle: -1 * CGFloat (M_PI_2) );
+            rotation = CGAffineTransform( rotationAngle: -1 * CGFloat (Double.pi/2) );
             break;
             
         case UIPopoverArrowDirection.right:
             width -= ARROW_BASE;
             coordinate = ((self.frame.size.height / 2) + self.arrowOffset) - (arrowView.arrowHeight/2);
             arrowView.frame = CGRect(x: width, y: coordinate, width: ARROW_BASE, height: arrowView.arrowHeight);
-            rotation = CGAffineTransform( rotationAngle: CGFloat (M_PI_2) );
+            rotation = CGAffineTransform( rotationAngle: CGFloat (Double.pi/2) );
             break;
             
         default:
